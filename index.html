@@ -1,0 +1,45 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Open Street Map</title>
+    <link rel="stylesheet" href="css/ol.css" type="text/css" />
+    <script src="js/ol.js"></script>
+
+	</head>
+  <body>
+     
+    <div id="map" class="map"></div>
+	<div id="info">&nbsp;</div>
+     <div id="overlay" style="background-color: white; border-radius: 10px; border: 1px solid black; padding: 5px 10px;">
+	
+	
+    <script>
+	
+			var wmsSource =new ol.source.ImageWMS({
+			url:'http://localhost:8080/geoserver/wms',
+			params: {'LAYERS':'tiger:tiger_roads'},
+			serverType:'geoserver',
+			crossOrigin: 'anonymous'
+			});
+	
+			var wmsLayer=new ol.layer.Image({
+			source:wmsSource
+			});
+	
+	           var view = new ol.View({
+				center: [0, 0],
+				zoom: 1
+				});
+	
+				var map = new ol.Map({
+				layers: [wmsLayer],
+				target: 'map',
+				view: view
+				});
+	
+		
+		
+		
+    </script>
+  </body>
+</html>
